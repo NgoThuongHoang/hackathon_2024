@@ -1,0 +1,109 @@
+.task-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .task-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 300px;
+  }
+  
+  .card-body {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .progress {
+    margin-top: 10px;
+  }
+  
+  .progress-bar {
+    height: 20px;
+    transition: width 0.3s ease;
+  }
+  
+  .progress-bar-pending {
+    background-color: #ffc107;
+  }
+  
+  .progress-bar-in-progress {
+    background-color: #17a2b8;
+  }
+  
+  .progress-bar-completed {
+    background-color: #28a745;
+  }
+  
+  .task-list {
+    margin-top: 20px;
+  }
+  
+  .status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+  }
+  
+  .status-badge.pending {
+    background-color: #ffd700;
+  }
+  
+  .status-badge.in-progress {
+    background-color: #87ceeb;
+  }
+  
+  .status-badge.completed {
+    background-color: #90ee90;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .btt-task{
+    margin-right: 15px;
+  }
+  
+  .sort-container {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .sort-button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .sort-button:hover {
+    background-color: #e9ecef;
+  }
+  
+  .sort-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+  }
+  
+  .sort-icon {
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  
+  .sort-asc::after {
+    content: "▲";
+  }
+  
+  .sort-desc::after {
+    content: "▼";
+  }

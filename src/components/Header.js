@@ -49,7 +49,6 @@ const Header = () => {
             <div className="dropdown-menu">
               <ul>
                 <li><Link to="/profile">Trang cá nhân</Link></li>
-                <li><a href="/home">Đổi mật khẩu</a></li>
                 <li><a href="/login" onClick={(e) => {
                   e.preventDefault(); // Ngăn chuyển trang ngay lập tức
                   const confirmLogout = window.confirm("Sẽ thoát phiên làm việc này, bạn có muốn đăng xuất?");

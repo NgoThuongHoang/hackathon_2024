@@ -19,32 +19,49 @@ const PersonnelManagement = () => {
 
   const [editUserId, setEditUserId] = useState(null); // Track which user is being edited
 
-  // Lấy danh sách người dùng từ API
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get('https://backend-hackathon-dongnai.vercel.app/api/auth', {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        });
-        
-        if (response.data) {
-          setUsers(response.data);
-        } else {
-          setError('Không có dữ liệu trả về từ server');
-        }
-        setLoading(false);
-      } catch (err) {
-        console.error('Chi tiết lỗi:', err);
-        setError(err.response?.data?.message || 'Lỗi khi tải dữ liệu người dùng');
-        setLoading(false);
+  // Định nghĩa hàm fetchUsers để lấy danh sách người dùng từ API
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get('https://backend-hackathon-dongnai.vercel.app/api/auth', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        timeout: 10000 // Thêm timeout 10 giây
+      });
+      
+      if (Array.isArray(response.data)) {
+        setUsers(response.data);
+      } else if (response.data && Array.isArray(response.data.users)) {
+        setUsers(response.data.users);
+      } else {
+        throw new Error('Dữ liệu không đúng định dạng');
       }
-    };
+      setLoading(false);
+    } catch (err) {
+      console.error('Chi tiết lỗi:', err);
+      if (err.code === 'ECONNABORTED') {
+        setError('Kết nối tới máy chủ quá thời gian. Vui lòng thử lại.');
+      } else if (!navigator.onLine) {
+        setError('Không có kết nối internet. Vui lòng kiểm tra lại.');
+      } else {
+        setError('Không thể kết nối tới máy chủ. Vui lòng thử lại sau.');
+      }
+      setLoading(false);
+    }
+  };
 
+  // Lấy danh sách người dùng khi component được render
+  useEffect(() => {
     fetchUsers();
   }, []);
+
+  // Thêm hàm retry khi gặp lỗi
+  const retryFetchUsers = () => {
+    setLoading(true);
+    setError(null);
+    fetchUsers();
+  };
 
   // Hàm thêm người dùng mới
   const handleAddUser = async () => {
@@ -140,7 +157,12 @@ const PersonnelManagement = () => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <div>
+        <p>{error}</p>
+        <button onClick={retryFetchUsers}>Thử lại</button>
+      </div>
+    );
   }
 
   return (
