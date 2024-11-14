@@ -12,7 +12,7 @@ const Login = ({ setIsAuthenticated }) => {
     if (email === 'admin@gmail.com' && password === '123456') {
       localStorage.setItem('user', JSON.stringify({ email }));
       setIsAuthenticated(true);
-      navigate('/dashboard');
+      navigate('/home');
     } else {
       alert('Thông tin đăng nhập không chính xác');
     }

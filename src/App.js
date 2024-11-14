@@ -3,18 +3,16 @@ import { BrowserRouter, Route, Routes, Navigate, useLocation } from 'react-route
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register'; // Thêm trang đăng ký
-import Dashboard from './pages/Dashboard';
+import UserProfilePage from './pages/UserProfilePage';
 import PersonnelManagement from './pages/PersonnelManagement';
-import TaskManagement from './pages/TaskManagement';
-import FacilityManagement from './pages/FacilityManagement';
-import FinancialManagement from './pages/FinancialManagement';
-import PerformanceEvaluation from './pages/PerformanceEvaluation';
-import RewardsAndDiscipline from './pages/RewardsAndDiscipline';
-import DocumentStorage from './pages/DocumentStorage';
 import PrivateRoute from './PrivateRoute';  // Ensure this import is correct
+import ProposalDashboard from './pages/ProposalDashboard';
+import TaskManagement from './pages/TaskManagement';
+import WorkScheduleManagement from './pages/WorkScheduleManagement';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';  // Đảm bảo rằng các styles từ App.css được áp dụng
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,11 +45,6 @@ const App = () => {
               <Home />
             </PrivateRoute>
           } />
-          <Route path="/dashboard" element={
-            <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Dashboard />
-            </PrivateRoute>
-          } />
           <Route path="/personnel-management" element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <PersonnelManagement />
@@ -62,29 +55,19 @@ const App = () => {
               <TaskManagement />
             </PrivateRoute>
           } />
-          <Route path="/facility-management" element={
+          <Route path="/proposal-dashboard" element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <FacilityManagement />
+              <ProposalDashboard />
             </PrivateRoute>
           } />
-          <Route path="/financial-management" element={
+          <Route path="/profile" element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <FinancialManagement />
+              <UserProfilePage />
             </PrivateRoute>
           } />
-          <Route path="/performance-evaluation" element={
+          <Route path="/work-schedule-management" element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <PerformanceEvaluation />
-            </PrivateRoute>
-          } />
-          <Route path="/rewards-and-discipline" element={
-            <PrivateRoute isAuthenticated={isAuthenticated}>
-              <RewardsAndDiscipline />
-            </PrivateRoute>
-          } />
-          <Route path="/document-storage" element={
-            <PrivateRoute isAuthenticated={isAuthenticated}>
-              <DocumentStorage />
+              <WorkScheduleManagement />
             </PrivateRoute>
           } />
         </Routes>
