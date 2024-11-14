@@ -1,14 +1,13 @@
-// src/PrivateRoute.js
-
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({ isAuthenticated, children }) => {
   if (!isAuthenticated) {
-    // Redirect to login page if not authenticated
+    // Nếu chưa đăng nhập, chuyển hướng đến trang login
     return <Navigate to="/login" />;
   }
-  return children;
+
+  return children;  // Hiển thị các component con nếu đã đăng nhập
 };
 
 export default PrivateRoute;

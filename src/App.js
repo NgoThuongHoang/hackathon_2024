@@ -29,7 +29,7 @@ const App = () => {
     <div>
       {/* Chỉ hiển thị Header nếu không ở trang login hoặc register */}
       {location.pathname !== "/login" && location.pathname !== "/register" && <Header />}
-      <div className="container">
+      <div>
         <Routes>
           {/* Redirect đến trang home nếu người dùng vào root "/" và đã đăng nhập */}
           <Route 
@@ -40,36 +40,36 @@ const App = () => {
           <Route path="/register" element={<Register />} /> {/* Route cho trang đăng ký */}
 
           {/* Các route bảo vệ (chỉ cho người đã đăng nhập) */}
-          <Route path="/home" element={
+          <Route path="/home" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Home />
             </PrivateRoute>
-          } />
-          <Route path="/personnel-management" element={
+          )} />
+          <Route path="/personnel-management" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <PersonnelManagement />
             </PrivateRoute>
-          } />
-          <Route path="/task-management" element={
+          )} />
+          <Route path="/task-management" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <TaskManagement />
             </PrivateRoute>
-          } />
-          <Route path="/proposal-dashboard" element={
+          )} />
+          <Route path="/proposal-dashboard" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <ProposalDashboard />
             </PrivateRoute>
-          } />
-          <Route path="/profile" element={
+          )} />
+          <Route path="/profile" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <UserProfilePage />
             </PrivateRoute>
-          } />
-          <Route path="/work-schedule-management" element={
+          )} />
+          <Route path="/work-schedule-management" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <WorkScheduleManagement />
             </PrivateRoute>
-          } />
+          )} />
         </Routes>
       </div>
       {/* Chỉ hiển thị Footer nếu không ở trang login hoặc register */}
