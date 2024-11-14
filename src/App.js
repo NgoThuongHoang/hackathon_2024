@@ -34,7 +34,11 @@ const App = () => {
   return (
     <div>
       {/* Chỉ hiển thị Header nếu không ở trang login hoặc register */}
+<<<<<<< HEAD
       {location.pathname !== "/login" && location.pathname !== "/register" &&  location.pathname !== "/forgot-password" && <Header />}
+=======
+      {location.pathname !== "/login" && location.pathname !== "/register" && <Header />}
+>>>>>>> a11ba99 (làm login)
       <div>
         <Routes>
           {/* Redirect đến trang home nếu người dùng vào root "/" và đã đăng nhập */}
@@ -51,12 +55,17 @@ const App = () => {
               <Home />
             </PrivateRoute>
 <<<<<<< HEAD
+<<<<<<< HEAD
           )} />
           <Route path="/personnel-management" element={(
 =======
           } />
           <Route path="/personnel-management" element={
 >>>>>>> 472f6bc (làm header menu dropdown)
+=======
+          )} />
+          <Route path="/personnel-management" element={(
+>>>>>>> a11ba99 (làm login)
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <PersonnelManagement />
             </PrivateRoute>
@@ -65,6 +74,7 @@ const App = () => {
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <TaskManagement />
             </PrivateRoute>
+<<<<<<< HEAD
 <<<<<<< HEAD
           )} />
           <Route path="/proposal-dashboard" element={(
@@ -85,21 +95,29 @@ const App = () => {
 =======
           } />
           <Route path="/proposal-dashboard" element={
+=======
+          )} />
+          <Route path="/proposal-dashboard" element={(
+>>>>>>> a11ba99 (làm login)
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <ProposalDashboard />
             </PrivateRoute>
-          } />
-          <Route path="/profile" element={
+          )} />
+          <Route path="/profile" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <UserProfilePage />
             </PrivateRoute>
-          } />
-          <Route path="/work-schedule-management" element={
+          )} />
+          <Route path="/work-schedule-management" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <WorkScheduleManagement />
             </PrivateRoute>
+<<<<<<< HEAD
           } />
 >>>>>>> 472f6bc (làm header menu dropdown)
+=======
+          )} />
+>>>>>>> a11ba99 (làm login)
         </Routes>
       </div>
       {/* Chỉ hiển thị Footer nếu không ở trang login hoặc register */}
