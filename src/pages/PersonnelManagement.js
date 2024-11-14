@@ -23,11 +23,22 @@ const PersonnelManagement = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('https://backend-hackathon-dongnai.vercel.app/api/');
-        setUsers(response.data);
+        const response = await axios.get('https://backend-hackathon-dongnai.vercel.app/api/auth', {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        
+        if (response.data) {
+          setUsers(response.data);
+        } else {
+          setError('Không có dữ liệu trả về từ server');
+        }
         setLoading(false);
       } catch (err) {
-        setError('Lỗi khi tải dữ liệu người dùng');
+        console.error('Chi tiết lỗi:', err);
+        setError(err.response?.data?.message || 'Lỗi khi tải dữ liệu người dùng');
         setLoading(false);
       }
     };
@@ -38,30 +49,39 @@ const PersonnelManagement = () => {
   // Hàm thêm người dùng mới
   const handleAddUser = async () => {
     try {
-      const response = await axios.post('/api/users/register', formData);
+      const response = await axios.post('https://backend-hackathon-dongnai.vercel.app/api/auth/register', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
       setUsers([...users, response.data.user]);
       resetFormData();
       alert('Thêm người dùng thành công');
     } catch (err) {
-      setError('Có lỗi khi thêm người dùng');
+      setError(err.response?.data?.message || 'Có lỗi khi thêm người dùng');
     }
   };
 
   // Hàm xóa người dùng
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`/api/users/${userId}`);
-      setUsers(users.filter((user) => user._id !== userId));
+      await axios.delete(`https://backend-hackathon-dongnai.vercel.app/api/auth/${userId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      setUsers(users.filter((user) => user.user_id !== userId));
       alert('Xóa người dùng thành công');
     } catch (err) {
-      setError('Có lỗi khi xóa người dùng');
+      setError(err.response?.data?.message || 'Có lỗi khi xóa người dùng');
     }
   };
 
   // Hàm chỉnh sửa người dùng
   const handleEditUser = async (userId) => {
     setEditUserId(userId);
-    const userToEdit = users.find((user) => user._id === userId);
+    const userToEdit = users.find((user) => user.user_id === userId);
     setFormData({
       full_name: userToEdit.full_name,
       email: userToEdit.email,
@@ -76,14 +96,22 @@ const PersonnelManagement = () => {
   // Hàm cập nhật người dùng
   const handleUpdateUser = async () => {
     try {
-      const updatedUser = { ...formData };
-      const response = await axios.put(`/api/users/${editUserId}`, updatedUser);
-      setUsers(users.map((user) => (user._id === editUserId ? response.data.user : user)));
+      const response = await axios.put(
+        `https://backend-hackathon-dongnai.vercel.app/api/auth/${editUserId}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+      setUsers(users.map((user) => (user.user_id === editUserId ? response.data.user : user)));
       resetFormData();
       setEditUserId(null);
       alert('Cập nhật người dùng thành công');
     } catch (err) {
-      setError('Có lỗi khi cập nhật người dùng');
+      setError(err.response?.data?.message || 'Có lỗi khi cập nhật người dùng');
     }
   };
 
@@ -176,12 +204,15 @@ const PersonnelManagement = () => {
       <h2>Danh sách nhân viên</h2>
       <ul>
         {users.map((user) => (
-          <li key={user._id}>
-            <p>{user.full_name}</p>
-            <p>{user.email}</p>
-            <p>{user.phone_number}</p>
-            <button onClick={() => handleEditUser(user._id)}>Chỉnh sửa</button>
-            <button onClick={() => handleDeleteUser(user._id)}>Xóa</button>
+          <li key={user.user_id || user._id}>
+            <p>Họ tên: {user.full_name}</p>
+            <p>Email: {user.email}</p>
+            <p>Số điện thoại: {user.telephone || user.phone_number}</p>
+            <p>Vai trò: {user.role_id}</p>
+            <p>Cấp độ tổ chức: {user.organization_level}</p>
+            <p>Phòng ban: {user.department_id?.name || user.department_id}</p>
+            <button onClick={() => handleEditUser(user.user_id || user._id)}>Chỉnh sửa</button>
+            <button onClick={() => handleDeleteUser(user.user_id || user._id)}>Xóa</button>
           </li>
         ))}
       </ul>
