@@ -78,11 +78,22 @@ const PersonnelManagement = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('https://backend-hackathon-dongnai.vercel.app/api/');
-        setUsers(response.data);
+        const response = await axios.get('https://backend-hackathon-dongnai.vercel.app/api/auth', {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        
+        if (response.data) {
+          setUsers(response.data);
+        } else {
+          setError('Không có dữ liệu trả về từ server');
+        }
         setLoading(false);
       } catch (err) {
-        setError('Lỗi khi tải dữ liệu người dùng');
+        console.error('Chi tiết lỗi:', err);
+        setError(err.response?.data?.message || 'Lỗi khi tải dữ liệu người dùng');
         setLoading(false);
       }
     };
@@ -93,17 +104,30 @@ const PersonnelManagement = () => {
   // Hàm thêm người dùng mới
   const handleAddUser = async () => {
     try {
+<<<<<<< HEAD
       const response = await axios.post('/api/users/register', formData);
 >>>>>>> a11ba99 (làm login)
+=======
+      const response = await axios.post('https://backend-hackathon-dongnai.vercel.app/api/auth/register', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+>>>>>>> 1449a68 (lỗi máy chủ)
       setUsers([...users, response.data.user]);
       resetFormData();
       alert('Thêm người dùng thành công');
     } catch (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       setError(err.response?.data?.message || 'Có lỗi khi thêm người dùng');
 =======
       setError('Có lỗi khi thêm người dùng');
 >>>>>>> a11ba99 (làm login)
+=======
+      setError(err.response?.data?.message || 'Có lỗi khi thêm người dùng');
+>>>>>>> 1449a68 (lỗi máy chủ)
     }
   };
 
@@ -111,12 +135,16 @@ const PersonnelManagement = () => {
   const handleDeleteUser = async (userId) => {
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1449a68 (lỗi máy chủ)
       await axios.delete(`https://backend-hackathon-dongnai.vercel.app/api/auth/${userId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       setUsers(users.filter((user) => user.user_id !== userId));
+<<<<<<< HEAD
       alert('Xóa người dùng thành công');
     } catch (err) {
       setError(err.response?.data?.message || 'Có lỗi khi xóa người dùng');
@@ -127,6 +155,11 @@ const PersonnelManagement = () => {
     } catch (err) {
       setError('Có lỗi khi xóa người dùng');
 >>>>>>> a11ba99 (làm login)
+=======
+      alert('Xóa người dùng thành công');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Có lỗi khi xóa người dùng');
+>>>>>>> 1449a68 (lỗi máy chủ)
     }
   };
 
@@ -134,10 +167,14 @@ const PersonnelManagement = () => {
   const handleEditUser = async (userId) => {
     setEditUserId(userId);
 <<<<<<< HEAD
+<<<<<<< HEAD
     const userToEdit = users.find((user) => user.user_id === userId);
 =======
     const userToEdit = users.find((user) => user._id === userId);
 >>>>>>> a11ba99 (làm login)
+=======
+    const userToEdit = users.find((user) => user.user_id === userId);
+>>>>>>> 1449a68 (lỗi máy chủ)
     setFormData({
       full_name: userToEdit.full_name,
       email: userToEdit.email,
@@ -153,6 +190,9 @@ const PersonnelManagement = () => {
   const handleUpdateUser = async () => {
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1449a68 (lỗi máy chủ)
       const response = await axios.put(
         `https://backend-hackathon-dongnai.vercel.app/api/auth/${editUserId}`,
         formData,
@@ -164,20 +204,27 @@ const PersonnelManagement = () => {
         }
       );
       setUsers(users.map((user) => (user.user_id === editUserId ? response.data.user : user)));
+<<<<<<< HEAD
 =======
       const updatedUser = { ...formData };
       const response = await axios.put(`/api/users/${editUserId}`, updatedUser);
       setUsers(users.map((user) => (user._id === editUserId ? response.data.user : user)));
 >>>>>>> a11ba99 (làm login)
+=======
+>>>>>>> 1449a68 (lỗi máy chủ)
       resetFormData();
       setEditUserId(null);
       alert('Cập nhật người dùng thành công');
     } catch (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       setError(err.response?.data?.message || 'Có lỗi khi cập nhật người dùng');
 =======
       setError('Có lỗi khi cập nhật người dùng');
 >>>>>>> a11ba99 (làm login)
+=======
+      setError(err.response?.data?.message || 'Có lỗi khi cập nhật người dùng');
+>>>>>>> 1449a68 (lỗi máy chủ)
     }
   };
 
@@ -280,6 +327,9 @@ const PersonnelManagement = () => {
       <ul>
         {users.map((user) => (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1449a68 (lỗi máy chủ)
           <li key={user.user_id || user._id}>
             <p>Họ tên: {user.full_name}</p>
             <p>Email: {user.email}</p>
@@ -289,6 +339,7 @@ const PersonnelManagement = () => {
             <p>Phòng ban: {user.department_id?.name || user.department_id}</p>
             <button onClick={() => handleEditUser(user.user_id || user._id)}>Chỉnh sửa</button>
             <button onClick={() => handleDeleteUser(user.user_id || user._id)}>Xóa</button>
+<<<<<<< HEAD
 =======
           <li key={user._id}>
             <p>{user.full_name}</p>
@@ -297,6 +348,8 @@ const PersonnelManagement = () => {
             <button onClick={() => handleEditUser(user._id)}>Chỉnh sửa</button>
             <button onClick={() => handleDeleteUser(user._id)}>Xóa</button>
 >>>>>>> a11ba99 (làm login)
+=======
+>>>>>>> 1449a68 (lỗi máy chủ)
           </li>
         ))}
       </ul>
