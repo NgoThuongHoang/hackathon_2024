@@ -11,6 +11,9 @@ export const getTasks = async () => {
     console.log('Creating task', task);
   };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c1a94d2 (quản lí công tác)
   
   export const getProjects = async () => {
     // Tạm thời return mock data
@@ -37,6 +40,9 @@ export const getTasks = async () => {
       ...updates
     };
   };
+<<<<<<< HEAD
 =======
 >>>>>>> 472f6bc (làm header menu dropdown)
+=======
+>>>>>>> c1a94d2 (quản lí công tác)
   

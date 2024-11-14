@@ -20,6 +20,9 @@ const PersonnelManagement = () => {
   const [editUserId, setEditUserId] = useState(null); // Track which user is being edited
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c1a94d2 (quản lí công tác)
   // Định nghĩa hàm fetchUsers để lấy danh sách người dùng từ API
   const fetchUsers = async () => {
     try {
@@ -37,6 +40,7 @@ const PersonnelManagement = () => {
         setUsers(response.data.users);
       } else {
         throw new Error('Dữ liệu không đúng định dạng');
+<<<<<<< HEAD
       }
       setLoading(false);
     } catch (err) {
@@ -95,11 +99,34 @@ const PersonnelManagement = () => {
         console.error('Chi tiết lỗi:', err);
         setError(err.response?.data?.message || 'Lỗi khi tải dữ liệu người dùng');
         setLoading(false);
+=======
+>>>>>>> c1a94d2 (quản lí công tác)
       }
-    };
+      setLoading(false);
+    } catch (err) {
+      console.error('Chi tiết lỗi:', err);
+      if (err.code === 'ECONNABORTED') {
+        setError('Kết nối tới máy chủ quá thời gian. Vui lòng thử lại.');
+      } else if (!navigator.onLine) {
+        setError('Không có kết nối internet. Vui lòng kiểm tra lại.');
+      } else {
+        setError('Không thể kết nối tới máy chủ. Vui lòng thử lại sau.');
+      }
+      setLoading(false);
+    }
+  };
 
+  // Lấy danh sách người dùng khi component được render
+  useEffect(() => {
     fetchUsers();
   }, []);
+
+  // Thêm hàm retry khi gặp lỗi
+  const retryFetchUsers = () => {
+    setLoading(true);
+    setError(null);
+    fetchUsers();
+  };
 
   // Hàm thêm người dùng mới
   const handleAddUser = async () => {
@@ -254,15 +281,21 @@ const PersonnelManagement = () => {
 
   if (error) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c1a94d2 (quản lí công tác)
     return (
       <div>
         <p>{error}</p>
         <button onClick={retryFetchUsers}>Thử lại</button>
       </div>
     );
+<<<<<<< HEAD
 =======
     return <p>{error}</p>;
 >>>>>>> a11ba99 (làm login)
+=======
+>>>>>>> c1a94d2 (quản lí công tác)
   }
 
   return (

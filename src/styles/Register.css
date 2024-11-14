@@ -59,12 +59,16 @@
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+<<<<<<< HEAD
   margin-bottom: 10px; /* Thêm khoảng cách giữa hai nút */
+=======
+>>>>>>> c1a94d2 (quản lí công tác)
 }
 
 .register-btn:hover {
   background-color: #ddd;
 }
+<<<<<<< HEAD
 
 .back-btn {
   width: 100%;
@@ -79,3 +83,5 @@
 .back-btn:hover {
   background-color: #DDDDDD; /* Màu đỏ đậm hơn khi hover */
 }
+=======
+>>>>>>> c1a94d2 (quản lí công tác)

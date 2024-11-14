@@ -15,10 +15,14 @@ const footerStyle = {
   color: 'white',
   textAlign: 'center',
 <<<<<<< HEAD
+<<<<<<< HEAD
   position: 'fixed',
 =======
   position: 'absolute',
 >>>>>>> 472f6bc (làm header menu dropdown)
+=======
+  position: 'fixed',
+>>>>>>> c1a94d2 (quản lí công tác)
   bottom: '0',
   width: '100%',
 };
