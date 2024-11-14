@@ -60,15 +60,22 @@
   border-radius: 5px;
   cursor: pointer;
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-bottom: 10px; /* Thêm khoảng cách giữa hai nút */
 =======
 >>>>>>> c1a94d2 (quản lí công tác)
+=======
+  margin-bottom: 10px; /* Thêm khoảng cách giữa hai nút */
+>>>>>>> 41de5bd (xong login - đăng ký - quên mật khẩu)
 }
 
 .register-btn:hover {
   background-color: #ddd;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 41de5bd (xong login - đăng ký - quên mật khẩu)
 
 .back-btn {
   width: 100%;
@@ -82,6 +89,10 @@
 
 .back-btn:hover {
   background-color: #DDDDDD; /* Màu đỏ đậm hơn khi hover */
+<<<<<<< HEAD
 }
 =======
 >>>>>>> c1a94d2 (quản lí công tác)
+=======
+}
+>>>>>>> 41de5bd (xong login - đăng ký - quên mật khẩu)

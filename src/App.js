@@ -9,9 +9,13 @@ import PrivateRoute from './PrivateRoute';  // Ensure this import is correct
 import ProposalDashboard from './pages/ProposalDashboard';
 import TaskManagement from './pages/TaskManagement';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ForgotPassword from './pages/ForgotPassword';
 =======
 >>>>>>> 472f6bc (làm header menu dropdown)
+=======
+import ForgotPassword from './pages/ForgotPassword';
+>>>>>>> 41de5bd (xong login - đăng ký - quên mật khẩu)
 import WorkScheduleManagement from './pages/WorkScheduleManagement';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -36,10 +40,14 @@ const App = () => {
     <div>
       {/* Chỉ hiển thị Header nếu không ở trang login hoặc register */}
 <<<<<<< HEAD
+<<<<<<< HEAD
       {location.pathname !== "/login" && location.pathname !== "/register" &&  location.pathname !== "/forgot-password" && <Header />}
 =======
       {location.pathname !== "/login" && location.pathname !== "/register" && <Header />}
 >>>>>>> a11ba99 (làm login)
+=======
+      {location.pathname !== "/login" && location.pathname !== "/register" &&  location.pathname !== "/forgot-password" && <Header />}
+>>>>>>> 41de5bd (xong login - đăng ký - quên mật khẩu)
       <div>
         <Routes>
           {/* Redirect đến trang home nếu người dùng vào root "/" và đã đăng nhập */}
