@@ -8,6 +8,7 @@ import PersonnelManagement from './pages/PersonnelManagement';
 import PrivateRoute from './PrivateRoute';  // Ensure this import is correct
 import ProposalDashboard from './pages/ProposalDashboard';
 import TaskManagement from './pages/TaskManagement';
+import ForgotPassword from './pages/ForgotPassword';
 import WorkScheduleManagement from './pages/WorkScheduleManagement';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <div>
       {/* Chỉ hiển thị Header nếu không ở trang login hoặc register */}
-      {location.pathname !== "/login" && location.pathname !== "/register" && <Header />}
+      {location.pathname !== "/login" && location.pathname !== "/register" &&  location.pathname !== "/forgot-password" && <Header />}
       <div>
         <Routes>
           {/* Redirect đến trang home nếu người dùng vào root "/" và đã đăng nhập */}
@@ -38,8 +39,8 @@ const App = () => {
             element={isAuthenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} 
           />
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path="/register" element={<Register />} /> {/* Route cho trang đăng ký */}
-
+          <Route path="/register" element={<Register />} /> 
+          <Route path="/forgot-password" element={<ForgotPassword />} /> 
           {/* Các route bảo vệ (chỉ cho người đã đăng nhập) */}
           <Route path="/home" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>

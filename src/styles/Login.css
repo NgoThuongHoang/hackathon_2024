@@ -1,88 +1,116 @@
 /* Full-screen background */
 .login-container {
-    background-image: url('/public/assets/Background-login.jpg');
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-  .login-card {
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent */
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    width: 350px;
-  }
-  
-  .login-title {
-    text-align: center;
-    color: white;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-    position: relative;
-  }
-  
-  .input-icon {
-    position: relative;
-  }
-  
-  .input-icon input {
-    width: 100%;
-    padding-left: 2.5rem;
-    padding-right: 1rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  .input-icon .icon {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #8B8B8B;
-  }
-  
-  .login-actions {
-    text-align: center;
-  }
-  
-  .remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
-  
-  .login-btn {
-    width: 100%;
-    background-color: #ffffff;
-    border: none;
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-btn:hover {
-    background-color: #ddd;
-  }
-  
-  .register-link {
-    text-align: center;
-    margin-top: 15px;
-    color: white;
-  }
-  
-  .register-link a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
+  background-image: url('/public/assets/Background-login.jpg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 350px;
+  text-align: center;
+}
+
+.login-title {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon input {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.input-icon .icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #8B8B8B;
+}
+
+.login-actions {
+  text-align: center;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.login-btn {
+  width: 100%;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:active {
+  background-color: #0056b3; /* Màu nền khi button được click */
+  transform: scale(0.98); /* Hiệu ứng thu nhỏ khi click */
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.back-btn {
+  width: 100%;
+  background-color: #f44336; /* Màu đỏ */
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Thêm khoảng cách giữa hai nút */
+}
+
+.back-btn:hover {
+  background-color: #d32f2f; /* Màu đỏ đậm hơn khi hover */
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  color: #333;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

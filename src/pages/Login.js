@@ -41,17 +41,17 @@ const Login = ({ setIsAuthenticated }) => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h2 className="login-title">Login</h2>
+        <h2 className="login-title">Đăng nhập</h2>
         <div className="form-group">
           <div className="input-icon">
             <input
               type="email"
               className="form-control"
-              placeholder="Username"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <i className="fa fa-user icon"></i>
+            <i className="fa fa-envelope icon"></i>
           </div>
         </div>
         <div className="form-group">
@@ -68,17 +68,17 @@ const Login = ({ setIsAuthenticated }) => {
         </div>
         <div className="login-actions">
           <div className="remember-forgot">
-            <label>
-              <input type="checkbox" /> Remember me
+            <label style={{color: 'black'}}>
+              <input type="checkbox"/> Lưu đăng nhập
             </label>
-            <a href="/forgot-password">Forgot password?</a>
+            <a href="/forgot-password" style={{textDecoration: 'none', color: 'black'}}>Quên mật khẩu?</a>
           </div>
-          <button className="btn login-btn" onClick={handleLogin}>
-            Login
+          <button className="login-btn" onClick={handleLogin}>
+            Đăng nhập
           </button>
         </div>
         <div className="register-link">
-          Don't have an account? <a href="/register">Register</a>
+          Chưa có tài khoản? <a href="/register" style={{marginLeft: '10px', textDecoration: 'none'}}>Đăng ký</a>
         </div>
       </div>
     </div>

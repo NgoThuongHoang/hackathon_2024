@@ -59,8 +59,23 @@
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 10px; /* Thêm khoảng cách giữa hai nút */
 }
 
 .register-btn:hover {
   background-color: #ddd;
+}
+
+.back-btn {
+  width: 100%;
+  background-color: #ffffff; /* Màu đỏ */
+  border: none;
+  color: 333;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #DDDDDD; /* Màu đỏ đậm hơn khi hover */
 }

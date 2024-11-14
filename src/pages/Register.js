@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import '../styles/Register.css'; // Assuming you'll create or modify this CSS file
+import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css'; // Sử dụng cùng file CSS với trang đăng nhập
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -16,10 +18,14 @@ const Register = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1); // Điều hướng trở lại trang trước đó
+  };
+
   return (
-    <div className="register-container">
-      <div className="register-card">
-        <h2 className="register-title">Đăng Ký</h2>
+    <div className="login-container">
+      <div className="login-card">
+        <h2 className="login-title">Đăng ký</h2>
         <form onSubmit={handleRegister} className="register-form">
           <div className="form-group">
             <div className="input-icon">
@@ -39,7 +45,7 @@ const Register = () => {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Mật khẩu"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -52,7 +58,7 @@ const Register = () => {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Nhập lại mật khẩu"
+                placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
@@ -60,8 +66,9 @@ const Register = () => {
               <i className="fa fa-lock icon"></i>
             </div>
           </div>
-          <button type="submit" className="btn register-btn">Đăng ký</button>
-        </form>
+          <button type="submit" className="login-btn" style={{marginBottom: '10px'}}>Đăng ký</button>
+          <a href="/login" style={{textDecoration: 'none'}}>Quay lại</a>
+          </form>
       </div>
     </div>
   );
