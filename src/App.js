@@ -8,11 +8,15 @@ import PersonnelManagement from './pages/PersonnelManagement';
 import PrivateRoute from './PrivateRoute';  // Ensure this import is correct
 import ProposalDashboard from './pages/ProposalDashboard';
 import TaskManagement from './pages/TaskManagement';
+<<<<<<< HEAD
 import ForgotPassword from './pages/ForgotPassword';
+=======
+>>>>>>> 472f6bc (làm header menu dropdown)
 import WorkScheduleManagement from './pages/WorkScheduleManagement';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';  // Đảm bảo rằng các styles từ App.css được áp dụng
 
 import './App.css';  // Đảm bảo rằng các styles từ App.css được áp dụng
 
@@ -46,8 +50,13 @@ const App = () => {
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Home />
             </PrivateRoute>
+<<<<<<< HEAD
           )} />
           <Route path="/personnel-management" element={(
+=======
+          } />
+          <Route path="/personnel-management" element={
+>>>>>>> 472f6bc (làm header menu dropdown)
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <PersonnelManagement />
             </PrivateRoute>
@@ -56,6 +65,7 @@ const App = () => {
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <TaskManagement />
             </PrivateRoute>
+<<<<<<< HEAD
           )} />
           <Route path="/proposal-dashboard" element={(
             <PrivateRoute isAuthenticated={isAuthenticated}>
@@ -72,6 +82,24 @@ const App = () => {
               <WorkScheduleManagement />
             </PrivateRoute>
           )} />
+=======
+          } />
+          <Route path="/proposal-dashboard" element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <ProposalDashboard />
+            </PrivateRoute>
+          } />
+          <Route path="/profile" element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <UserProfilePage />
+            </PrivateRoute>
+          } />
+          <Route path="/work-schedule-management" element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <WorkScheduleManagement />
+            </PrivateRoute>
+          } />
+>>>>>>> 472f6bc (làm header menu dropdown)
         </Routes>
       </div>
       {/* Chỉ hiển thị Footer nếu không ở trang login hoặc register */}

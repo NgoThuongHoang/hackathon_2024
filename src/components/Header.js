@@ -49,6 +49,10 @@ const Header = () => {
             <div className="dropdown-menu">
               <ul>
                 <li><Link to="/profile">Trang cá nhân</Link></li>
+<<<<<<< HEAD
+=======
+                <li><a href="/home">Đổi mật khẩu</a></li>
+>>>>>>> 472f6bc (làm header menu dropdown)
                 <li><a href="/login" onClick={(e) => {
                   e.preventDefault(); // Ngăn chuyển trang ngay lập tức
                   const confirmLogout = window.confirm("Sẽ thoát phiên làm việc này, bạn có muốn đăng xuất?");

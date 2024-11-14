@@ -14,7 +14,11 @@ const footerStyle = {
   backgroundColor: '#08326B',
   color: 'white',
   textAlign: 'center',
+<<<<<<< HEAD
   position: 'fixed',
+=======
+  position: 'absolute',
+>>>>>>> 472f6bc (làm header menu dropdown)
   bottom: '0',
   width: '100%',
 };

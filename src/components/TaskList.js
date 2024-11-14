@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import '../styles/TaskList.css'; // Import CSS cho TaskList
 
 const TaskList = ({ tasks, onDelete, onEdit, onToggleComplete, onShowDetail }) => {
@@ -59,6 +60,21 @@ const TaskList = ({ tasks, onDelete, onEdit, onToggleComplete, onShowDetail }) =
           ))}
         </tbody>
       </table>
+=======
+import TaskCard from './TaskCard';
+
+const TaskList = ({ tasks, onCreateTask }) => {
+  return (
+    <div>
+      <h3>Danh sách công việc</h3>
+      {tasks.map((task) => (
+        <TaskCard key={task.id} task={task} />
+      ))}
+      {/* Form hoặc cách thêm công việc mới */}
+      <button onClick={() => onCreateTask({ id: Date.now(), name: 'New Task', status: 'pending', project: 'Project A' })}>
+        Thêm công việc mới
+      </button>
+>>>>>>> 472f6bc (làm header menu dropdown)
     </div>
   );
 };

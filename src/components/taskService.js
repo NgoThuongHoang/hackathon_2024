@@ -10,6 +10,7 @@ export const getTasks = async () => {
     // Gửi công việc mới lên server
     console.log('Creating task', task);
   };
+<<<<<<< HEAD
   
   export const getProjects = async () => {
     // Tạm thời return mock data
@@ -36,4 +37,6 @@ export const getTasks = async () => {
       ...updates
     };
   };
+=======
+>>>>>>> 472f6bc (làm header menu dropdown)
   

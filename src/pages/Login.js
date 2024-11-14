@@ -8,33 +8,15 @@ const Login = ({ setIsAuthenticated }) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      if (!email || !password) {
-        alert('Vui lòng nhập đầy đủ email và mật khẩu');
-        return;
-      }
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-      const response = await axios.post('https://backend-hackathon-dongnai.vercel.app/api/auth/login', {
-        email: email.trim(),
-        password: password.trim()
-      });
-
-      if (response.data.success) {
-        alert(response.data.message || 'Đăng nhập thành công');
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        setIsAuthenticated(true);
-        navigate('/home');
-      } else {
-        alert('Đăng nhập không thành công');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      if (error.response) {
-        alert(error.response.data.message || 'Đăng nhập thất bại');
-      } else {
-        alert('Có lỗi xảy ra trong quá trình đăng nhập');
-      }
+    if (email === 'admin@gmail.com' && password === '123456') {
+      localStorage.setItem('user', JSON.stringify({ email }));
+      setIsAuthenticated(true);
+      navigate('/dashboard');
+    } else {
+      alert('Thông tin đăng nhập không chính xác');
     }
   };
 

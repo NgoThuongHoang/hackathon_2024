@@ -5,12 +5,15 @@ import { faChevronLeft, faChevronRight, faEye, faEdit, faTrashAlt } from '@forta
 
 const TaskManagement = () => {
   const [tasks, setTasks] = useState([]);
+<<<<<<< HEAD
   const [currentPage, setCurrentPage] = useState(1);
   const tasksPerPage = 5; // Số công việc hiển thị mỗi trang
   const [selectedTask, setSelectedTask] = useState(null);
   const [showDetailModal, setShowDetailModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+=======
+>>>>>>> 472f6bc (làm header menu dropdown)
 
   // Dữ liệu giả (mock data) vì chưa có backend
   useEffect(() => {
@@ -37,6 +40,7 @@ const TaskManagement = () => {
     fetchTasks();
   }, []);
 
+<<<<<<< HEAD
   // Xử lý phân trang
   const indexOfLastTask = currentPage * tasksPerPage;
   const indexOfFirstTask = indexOfLastTask - tasksPerPage;
@@ -259,6 +263,19 @@ const TaskManagement = () => {
       {(showDetailModal || showEditModal || showDeleteModal) && (
         <div className="modal-backdrop fade show"></div>
       )}
+=======
+  return (
+    <div>
+      <h1>Quản lý công việc</h1>
+      <h2>Danh sách các công việc:</h2>
+      <ul>
+        {tasks.map((task) => (
+          <li key={task._id}>
+            Tên công việc: {task.name} - Mô tả: {task.description} - Trạng thái: {task.status}
+          </li>
+        ))}
+      </ul>
+>>>>>>> 472f6bc (làm header menu dropdown)
     </div>
   );
 };
